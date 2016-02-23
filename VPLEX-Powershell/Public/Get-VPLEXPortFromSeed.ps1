@@ -27,6 +27,15 @@ Function Get-VPLEXPortFromSeed {
   [CmdletBinding()]
   Param(
       [Parameter(Mandatory = $true,ValueFromPipeline=$True,ValueFromPipelinebyPropertyName=$True,HelpMessage = 'Please provide one or more VPLEX Seed')]
+      [ValidateScript(
+        {
+          If ($_ -match '^[A-Fa-f0-9]{8}$') {
+            $True
+          } Else {
+            Throw "$_ must contains 8 hexadecimals characters"
+          }
+        }
+      )]
       [String[]]$Seed,
       [Parameter(Mandatory = $false,HelpMessage = 'Please provide an ID of a VPLEX Director')]
       [ValidateSet('A','B')]
