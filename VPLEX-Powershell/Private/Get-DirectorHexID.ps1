@@ -1,9 +1,10 @@
 function Get-DirectorHexID {
     [CmdletBinding()]
     Param(
-        [Parameter(Mandatory = $true,HelpMessage = 'Merci de fournir le seed du VPLEX')]
-        [string]$Seed,
-        [Parameter(Mandatory = $true,HelpMessage = 'Merci de fournir l ID du director')]
+        [Parameter(Mandatory = $true,HelpMessage = 'Please provide a VPLEX Seed')]
+        [String]$Seed,
+        [Parameter(Mandatory = $true,HelpMessage = 'Please provide an ID of a VPLEX Director')]
+        [ValidateSet(0,1)]
         [Int]$Director
     )
 

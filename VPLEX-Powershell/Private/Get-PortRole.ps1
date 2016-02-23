@@ -1,7 +1,8 @@
 Function Get-PortRole {
     [CmdletBinding()]
     Param(
-        [Parameter(Mandatory = $true,HelpMessage = 'Merci de fournir l ID de l IO module')]
+        [Parameter(Mandatory = $true,HelpMessage = 'Please provide an ID of an IO Module - 0 to 3')]
+        [ValidateSet(0,1,2,3)]
         [Int]$IOModuleID
     )
 

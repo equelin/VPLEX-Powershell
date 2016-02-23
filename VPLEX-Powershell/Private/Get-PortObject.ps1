@@ -1,10 +1,12 @@
 Function Get-PortObject {
     [CmdletBinding()]
     Param(
-        [Parameter(Mandatory = $true,HelpMessage = 'Merci de fournir l ID du Director')]
-        [String]$DirectorID,
-        [Parameter(Mandatory = $true,HelpMessage = 'Merci de fournir le seed du VPLEX')]
-        [string]$Seed
+      [Parameter(Mandatory = $true,HelpMessage = 'Please provide a VPLEX Seed')]
+      [string]$Seed,
+      [Parameter(Mandatory = $true,HelpMessage = 'Please provide an ID of a VPLEX Director - A or B')]
+      [ValidateSet('A','B')]
+      [String]$DirectorID
+
     )
 
     Switch ($DirectorID) {
@@ -25,6 +27,9 @@ Function Get-PortObject {
         $objPort | Add-Member -type NoteProperty -name Name -value $PortName
         $objPort | Add-Member -type NoteProperty -name WWN -value $PortWWN.ToUpper()
         $objPort | Add-Member -type NoteProperty -name Role -value $PortRole
+        $objPort | Add-Member -type NoteProperty -name Director -value $DirectorID
+        $objPort | Add-Member -type NoteProperty -name IOModule -value $IOModuleID
+        $objPort | Add-Member -type NoteProperty -name Port -value $PortID
         $objPort.PSObject.TypeNames.Insert(0,'VPLEX.Ports')
         $colPorts += $objPort
       }
