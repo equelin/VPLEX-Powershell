@@ -12,7 +12,7 @@
 RootModule = 'VPLEX-Powershell.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '1.0.0'
 
 # ID used to uniquely identify this module
 GUID = 'e4d0035d-b6a8-47be-9564-7e0344695954'
@@ -66,7 +66,7 @@ FormatsToProcess = 'VPLEX-Powershell.Ports.Format.ps1xml'
 # NestedModules = @()
 
 # Functions to export from this module
-FunctionsToExport = '*'
+FunctionsToExport = @('Set-VPLEXDatastorePreferedPath', 'Get-VPLEXPortWWNCalculator', 'Get-VPLEXDatastorePreferedPathStats')
 
 # Cmdlets to export from this module
 CmdletsToExport = '*'
@@ -95,7 +95,7 @@ PrivateData = @{
         Tags = @('EMC','VPLEX','Powershell')
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/equelin/VPLEX-Powershell/blob/master/LICENSE'
 
         # A URL to the main website for this project.
         ProjectUri = 'https://github.com/equelin/VPLEX-Powershell'
