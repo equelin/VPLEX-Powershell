@@ -1,4 +1,4 @@
-﻿Function Get-VPLEXDatastorePreferedPathStats {
+Function Get-VPLEXDatastorePreferedPathStats {
 
   <#
   .SYNOPSIS
@@ -36,6 +36,19 @@
 
       Write-Verbose "Working on host $($VMH.Name)"
 
+      $lunTab = @{}
+
+      #Populate hastable with LUN
+      Try {
+        $VMH | Get-ScsiLun | %{$lunTab.Add($_.CanonicalName,$_)}
+        Write-Verbose "Retrieving LUN / Datastore infos on VMHost: $($VMH.Name)"
+      }
+      Catch {
+        Write-Host "Error while trying to get the list of LUN / Datastores"
+        Write-Host $_.Exception.Message
+        exit
+      }
+
       $Datastores = $VMH | Get-Datastore | where { $_.ExtensionData.Info.Vmfs.Extent.DiskName -match "^naa.6000144" } #Retrieving VPLEX's datastores
 
       #Working on each datastores connected to the host
@@ -43,9 +56,7 @@
 
         Write-Verbose "Working on datastore $($DS.Name)"
 
-        $LUN = Get-ScsiLUN -VMHost $VMH -CanonicalName $DS.ExtensionData.Info.Vmfs.Extent.DiskName # Retrieving lun
-
-        $Path = Get-ScsiLunPath -ScsiLun $LUN| where-Object { $_.Preferred -eq $true } #Retrieving prefered lun path
+        $Path = Get-ScsiLunPath -ScsiLun $lunTab[$DS.ExtensionData.Info.Vmfs.Extent.DiskName] | where-Object { $_.Preferred -eq $true } #Retrieving prefered lun path
 
         $i++ #Increment path total count
 

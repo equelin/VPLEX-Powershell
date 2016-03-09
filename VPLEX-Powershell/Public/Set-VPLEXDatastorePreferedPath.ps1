@@ -91,7 +91,7 @@ Function Set-VPLEXDatastorePreferedPath {
                 Write-Verbose "Trying to set the prefered path for datastore $($DS.Name) on VMHost $($VMH.Name). Path selected: $($PreferedPath.SanId)"
 
                 Try {
-                  If ($pscmdlet.ShouldProcess($PreferedPath.SanID, "Modify prefered path of datastore $DS.Name on host $VMH.Name")) {
+                  If ($pscmdlet.ShouldProcess($PreferedPath.SanID, "Modify prefered path of datastore $DS on host $VMH")) {
                       Write-Verbose "Host: $($VMH.Name) LUN: $($LUN.CanonicalName) Chemin prefere: $($PreferedPath.SanID)"
                       $PreferedPath | Set-ScsiLunPath -Preferred #Set the prefered path
                   }

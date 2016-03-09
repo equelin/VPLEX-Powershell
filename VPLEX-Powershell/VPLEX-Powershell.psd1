@@ -12,7 +12,7 @@
 RootModule = 'VPLEX-Powershell.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # ID used to uniquely identify this module
 GUID = 'e4d0035d-b6a8-47be-9564-7e0344695954'

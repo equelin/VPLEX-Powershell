@@ -20,7 +20,7 @@ Function Get-VPLEXPortWWNCalculator {
   Get-VPLEXPortWWNCalculator -Seed '47a01bdf','47a01bcc'
   Generate a list of all the ports of 2 different VPLEX
   .EXAMPLE
-  Get-VPLEXPortWWNCalculator -Seed '47a01bdf' -DirectorID 'A'
+  Get-VPLEXPortWWNCalculator -Seed '47a01bdf' -Director 'A'
   Generate the list of ports of Director A
   #>
 
