@@ -14,7 +14,7 @@ You will need to first install VMware PowerCLI before importing this module. It 
 # One time setup
     # Download the repository
     # Unblock the zip
-    # Extract the VPLEX-Powershell folder to a module path (e.g. $env:USERPROFILE\Documents\WindowsPowerShell\Modules\)
+    # Extract the VPLEX-Powershell folder to a module path (e.g. $env:PSModulePath)
 
     #Simple alternative, if you have PowerShell 5, or the PowerShellGet module:
         Install-Module VPLEX-Powershell
