@@ -61,7 +61,7 @@
     $object = New-Object -TypeName PSObject
     Add-Member -InputObject $object -MemberType NoteProperty -Name SanID -Value $key
     Add-Member -InputObject $object -MemberType NoteProperty -Name Paths -Value $result[$key]
-    Add-Member -InputObject $object -MemberType NoteProperty -Name Pourcentage -Value ([math]::round((($result[$key] * 100) / $i),2))
+    Add-Member -InputObject $object -MemberType NoteProperty -Name Percentage -Value ([math]::round((($result[$key] * 100) / $i),2))
 
     Write-Output $object
   }

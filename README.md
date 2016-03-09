@@ -31,6 +31,14 @@ You will need to first install VMware PowerCLI before importing this module. It 
 ```
 
 # Examples
+### Setting prefered paths for VPLEX's datastores
+
+```PowerShell
+# Set the prefered path for datastore 'datastore1' on esx 'esx1'. The VPLEX is defining by is seed. The prefered path will be on port 0 or 1 of the Director A
+    Connect-VIServer -Server vcenter.example.com
+    Set-VPLEXDatastorePreferedPath -VMHost 'esx1.example.com' -Datastore 'datastore1' -Seed 47a01bdf -Director 'A' -Port 0,1
+```
+
 ### Calculate VPLEX's ports WWN
 
 ```PowerShell
@@ -80,30 +88,23 @@ You will need to first install VMware PowerCLI before importing this module. It 
     Connect-VIServer -Server vcenter.example.com
     Get-VPLEXDatastorePreferedPathStats
 
-    SanID                        Paths
-    -----                        -----
-    50:00:14:42:C0:1B:BC:00      16
-    50:00:14:42:C0:1B:BC:01      18
-    50:00:14:42:C0:1B:DF:00      48
-    50:00:14:42:C0:1B:DF:01      29
-    50:00:14:42:D0:1B:BC:00      20
-    50:00:14:42:D0:1B:BC:01      12
-    50:00:14:42:D0:1B:DF:00      41
-    50:00:14:42:D0:1B:DF:01      36
-```
-
-### Setting prefered paths for VPLEX's datastores
-
-```PowerShell
-# Set the prefered path for datastore 'datastore1' on esx 'esx1'. The VPLEX is defining by is seed. THe prefered path will be on port 0 or 1 of the Director A
-    Set-VPLEXDatastorePreferedPath -VMHost 'esx1.example.com' -Datastore 'datastore1' -Seed 47a01bdf -Director 'A' -Port 0,1
+    SanID                        Paths  Percentage
+    -----                        -----  -----------
+    50:00:14:42:C0:1B:BC:00      16     7,27
+    50:00:14:42:C0:1B:BC:01      18     8,18
+    50:00:14:42:C0:1B:DF:00      48     21,82
+    50:00:14:42:C0:1B:DF:01      29     13,18
+    50:00:14:42:D0:1B:BC:00      20     9,09
+    50:00:14:42:D0:1B:BC:01      12     5,45
+    50:00:14:42:D0:1B:DF:00      41     18,64
+    50:00:14:42:D0:1B:DF:01      36     16,36
 ```
 
 # Available functions
 
+- Set-VPLEXDatastorePreferedPath
 - Get-VPLEXPortWWNCalculator
 - Get-VPLEXDatastorePreferedPathStats
-- Set-VPLEXDatastorePreferedPath
 
 # Author
 
