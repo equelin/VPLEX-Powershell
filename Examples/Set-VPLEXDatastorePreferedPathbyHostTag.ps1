@@ -1,6 +1,13 @@
 [CmdletBinding()]
 Param()
 
+<#
+.SYNOPSIS
+This script set the prefered path for all the VPLEX datastores on hosts defined by a tag.
+The tags represent the different datacenters, you should set the same tag on all hosts within the same datacenter.
+The seed of a VPLEX can be find in vplexcli with the command "ls -t /engines/*::wwn-seed".
+#>
+
 ###VARIABLES
 
 #vCenter's FQDN / IP
