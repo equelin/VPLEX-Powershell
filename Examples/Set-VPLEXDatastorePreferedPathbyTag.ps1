@@ -7,8 +7,8 @@ Param()
 $vCenterName="vcenter.example.com"
 
 #VMHosts Tags
-$TagDC1 = 'BMT'
-$TagDC2 = 'BH'
+$TagDC1 = 'DC1'
+$TagDC2 = 'DC2'
 
 #VPLEX Seed
 $SeedDC1 = '47a01bdf'
@@ -41,7 +41,6 @@ Catch{
 
 #Connection to the vCenter
 Try{
-  Set-PowerCLIConfiguration -DefaultVIServerMode multiple -Confirm:$false -Scope Session
   $vcenter = Connect-VIServer $vCenterName -ErrorAction "Stop"
 }
 Catch{
@@ -50,10 +49,10 @@ Catch{
 }
 
 #Set prefered path for datastores on host in DC1
-Get-VMHost -Tag $TagDC1 | Set-VPLEXDatastorePreferedPath -Seed $SeedDC1 -WhatIf -Verbose -Confirm:$false
+Get-VMHost -Tag $TagDC1 | Set-VPLEXDatastorePreferedPath -Seed $SeedDC1 -Confirm:$false
 
 #Set prefered path for datastores on host in DC2
-Get-VMHost -Tag $TagDC2 | Set-VPLEXDatastorePreferedPath -Seed $SeedDC2 -WhatIf -Verbose -Confirm:$false
+Get-VMHost -Tag $TagDC2 | Set-VPLEXDatastorePreferedPath -Seed $SeedDC2 -Confirm:$false
 
 #Get execution end time
 $endDTM = (Get-Date)
