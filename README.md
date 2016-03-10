@@ -31,6 +31,9 @@ You will need to first install VMware PowerCLI before importing this module. It 
 ```
 
 # Examples
+
+You will find more useful scrupts [here](https://github.com/equelin/VPLEX-Powershell/tree/master/Examples)
+
 ### Setting prefered paths for VPLEX's datastores
 
 ```PowerShell
